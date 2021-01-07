@@ -1,0 +1,17 @@
+version: 3
+projects:
+- dir: ec2
+  workspace: default
+  terraform_version: v0.11.0
+  apply_requirements: [mergeable, approved]
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - init
+      - plan
+    apply:
+      steps:
+      - run: echo hi
+      - apply
